@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engine Clicker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <p id="nuts-count"><img src="img/nut.png" alt="o">: <span></span></p>
+    <div class="main-view">
+        <button id="engine"></button>
+    </div>
+    <div class="upgrade-view">
+        <h3>Прокачка</h3>
+        <p>Буст гаек за клик <br>(+1) 
+            <button id="up-nuts-per-click">
+                <span>10</span>
+                <img src="img/nut.png" alt="o">
+            </button>
+        </p>
+        <p>Буст шанса суперклика <br>(+0.5%) 
+            <button id="up-chance-super-click">
+                <span>100</span>
+                <img src="img/nut.png" alt="o">
+            </button>
+        </p>
+        <p>Буст величины суперклика <br>(+10%) 
+            <button id="up-super-click-value">
+                <span>100</span>
+                <img src="img/nut.png" alt="o">
+            </button>
+        </p>
+        <!-- <p>2: +2 <img src="img/nut.png" alt="o"></p>
+        <p>3: +3 <img src="img/nut.png" alt="o"></p> -->
+    </div>
+    <div class="bottom-menu">
+        <button id="main-view-btn">Главная</button>
+        <button id="upgrade-view-btn">Прокачка</button>
+    </div>
+
+    <script src="js/variables.js"></script>
+    <script src="js/upgrades.js"></script>
+    <script src="js/main-button.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+</html>

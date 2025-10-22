@@ -1,0 +1,145 @@
+@font-face {
+  font-family: Three;
+  src: url(../fonts/3270/3270-Regular.ttf);
+}
+* {
+  box-sizing: border-box;
+  font-family: Three;
+  color: #ffffff;
+  font-size: 16px;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+html {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+body {
+  margin: 0;
+  background-image: radial-gradient(#253043, #000);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#nuts-count {
+  position: absolute;
+  top: 3vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 24px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+#nuts-count span {
+  font-size: 22px;
+  font-weight: 900;
+}
+#nuts-count img {
+  width: 25px;
+  height: 22px;
+}
+
+.main-view #engine {
+  width: 200px;
+  height: 200px;
+  background: transparent;
+  background-image: url(../img/engine.png);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.main-view #engine:active {
+  transform: scale(0.95);
+}
+
+.upgrade-view {
+  display: none;
+  width: 90vw;
+}
+.upgrade-view h3 {
+  font-size: 20px;
+  font-weight: 900;
+}
+.upgrade-view p {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.upgrade-view p button {
+  height: 40px;
+  background: #374f77;
+  border: 3px solid #6687be;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.upgrade-view p button:active {
+  background: #5474ac;
+}
+.upgrade-view p button.success {
+  background: #277e2a;
+  border: 3px solid #26c92c;
+}
+.upgrade-view p button.error {
+  background: #a81414;
+  border: 3px solid #ff3a3a;
+}
+.upgrade-view p button img {
+  height: 100%;
+}
+
+.bottom-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  background: #273b5f;
+}
+.bottom-menu button {
+  background: #374f77;
+  border: none;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.floating-text {
+  position: absolute;
+  filter: drop-shadow(0 0 10px #fcff3d);
+  font-size: 30px;
+  font-weight: 900;
+  pointer-events: none;
+  opacity: 1;
+  animation: floatUp var(--duration) ease-out forwards;
+}
+
+@keyframes floatUp {
+  from {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate(calc(var(--distance) * cos(var(--angle))), calc(var(--distance) * -1 * sin(var(--angle))));
+    opacity: 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
