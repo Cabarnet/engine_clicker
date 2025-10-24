@@ -39,7 +39,7 @@ function spawnFloatingText(x, y, text) {
     setTimeout(() => floatEl.remove(), duration * 12000);
 }
 
-document.querySelector('#engine').addEventListener('click', (event) => {
+document.querySelector('#engine').addEventListener('touchend', (event) => {
     addNutsPerClick(event);
 });
 
