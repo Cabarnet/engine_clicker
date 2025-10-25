@@ -1,3 +1,5 @@
+import {addNutsPerClick, superClick} from './main-button.js';
+
 const upgradeNutsPerClickBtn = document.querySelector('#up-nuts-per-click');
 const upgradeChanceSuperClickBtn = document.querySelector('#up-chance-super-click');
 const upgradeSuperClickValueBtn = document.querySelector('#up-super-click-value');
@@ -6,25 +8,39 @@ const nutsCount = document.querySelector('#nuts-count span');
 nutsCount.textContent = nuts;
 
 function upgradeProperty(priceSpan, button, type) {
-    upgradePrice = priceSpan.textContent;
+    let upgradePrice = priceSpan.textContent;
+    let priceMultiplier;
 
     if (nuts >= upgradePrice) {
         nuts -= upgradePrice;
         nutsCount.textContent = nuts;
 
-        if (type == 'superClickChance') {
-            chanceSuperClick += 0.005;
-            priceSpan.textContent = parseInt(upgradePrice * 1.5);
+        switch (type) {
+            case 'nutsPerClick':
+                nutsPerClick += 1;
+                priceMultiplier = 1.5;
+                break;
+            case 'superClickChance':
+                chanceSuperClick += 0.005;
+                priceMultiplier = 1.5;
+                break;
+            case 'superClickValue':
+                superClickValue += 0.1;
+                priceMultiplier = 1.5;
+                break;
         }
 
-        if (type == 'nutsPerClick') {
-            nutsPerClick += 1;
-            priceSpan.textContent = parseInt(upgradePrice * 1.5);
+        if (upgradePrice < 100) {
+            priceSpan.textContent = parseInt(upgradePrice * priceMultiplier);
         }
-
-        if (type == 'superClickValue') {
-            superClickValue += 0.1;
-            priceSpan.textContent = parseInt(upgradePrice * 1.5);
+        else if (upgradePrice < 1000) {
+            priceSpan.textContent = parseInt(upgradePrice * priceMultiplier) - parseInt(upgradePrice * priceMultiplier) % 10;
+        }
+        else if (upgradePrice < 10000) {
+            priceSpan.textContent = parseInt(upgradePrice * priceMultiplier) - parseInt(upgradePrice * priceMultiplier) % 100;
+        }
+        else {
+            priceSpan.textContent = parseInt(upgradePrice * priceMultiplier) - parseInt(upgradePrice * priceMultiplier) % 1000;
         }
 
         saveVariables();

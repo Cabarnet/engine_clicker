@@ -51,6 +51,13 @@ body {
     }
 }
 
+#restart-game {
+    position: absolute;
+    top: 5vh;
+    left: 5%;
+    background: none;
+}
+
 .main-view {
     #engine {
         width: 200px;
