@@ -45,16 +45,11 @@ function spawnFloatingText(x, y, text) {
     setTimeout(() => floatEl.remove(), duration * 1000);
 }
 
-function isIOS() {
-  return /iPad|iPhone|iPod/.test(navigator.userAgent)
-    || (navigator.userAgent.includes("Mac") && "ontouchend" in document);
-}
-
 function isMobile() {
   return /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
 }
 
-if (!isIOS() && isMobile()) {
+if (isMobile()) {
     document.querySelector('#engine').addEventListener('touchstart', addNutsPerClick);
 }
 else {
@@ -66,6 +61,6 @@ document.querySelector('#restart-game').addEventListener('click', () => {
     location.reload();
 });
 
-export {addNutsPerClick, superClick}; 
+export {addNutsPerClick, superClick, isMobile}; 
 
 // setInterval(addNutsPerClick, 100);

@@ -1,8 +1,27 @@
-import {addNutsPerClick, superClick} from './main-button.js';
+import {addNutsPerClick, superClick, isMobile} from './main-button.js';
 
-const upgradeNutsPerClickBtn = document.querySelector('#up-nuts-per-click');
-const upgradeChanceSuperClickBtn = document.querySelector('#up-chance-super-click');
-const upgradeSuperClickValueBtn = document.querySelector('#up-super-click-value');
+const nutsPerClickBtn = document.querySelector('#up-nuts-per-click');
+const chanceSuperClickBtn = document.querySelector('#up-chance-super-click');
+const superClickValueBtn = document.querySelector('#up-super-click-value');
+
+const updateData = {
+    nutsPerClick: {
+        type: 'nutsPerClick',
+        price: nutsPerClickPrice,
+        btn: nutsPerClickBtn
+    },
+    chanceSuperClick: {
+        type: 'superClickChance',
+        price: chanceSuperClickPrice,
+        btn: chanceSuperClickBtn
+    },
+    superClickValue: {
+        type: 'superClickValue',
+        price: superClickValuePrice,
+        btn: superClickValueBtn
+    }
+};
+
 const nutsCount = document.querySelector('#nuts-count span');
 
 nutsCount.textContent = nuts;
@@ -59,12 +78,44 @@ function upgradeProperty(priceSpan, button, type) {
     }
 }
 
-upgradeNutsPerClickBtn.addEventListener('click', () => {
-    upgradeProperty(document.querySelector('#up-nuts-per-click span'), upgradeNutsPerClickBtn, 'nutsPerClick');
-});
-upgradeChanceSuperClickBtn.addEventListener('click', () => {
-    upgradeProperty(document.querySelector('#up-chance-super-click span'), upgradeChanceSuperClickBtn, 'superClickChance');
-});
-upgradeSuperClickValueBtn.addEventListener('click', () => {
-    upgradeProperty(document.querySelector('#up-super-click-value span'), upgradeSuperClickValueBtn, 'superClickValue');
-});
+let interval;
+let timeout;
+function updateProccess ({ type, price, btn }) {
+    upgradeProperty(price, btn, type);
+    timeout = setTimeout(() => {
+        interval = setInterval(() => {
+            upgradeProperty(price, btn, type);
+        }, 100);
+    }, 500);
+}
+
+if (isMobile()) {
+    nutsPerClickBtn.addEventListener('touchstart', () => {
+        updateProccess(updateData.nutsPerClick);
+    });
+    chanceSuperClickBtn.addEventListener('touchstart', () => {
+        updateProccess(updateData.chanceSuperClick);
+    });
+    superClickValueBtn.addEventListener('touchstart', () => {
+        updateProccess(updateData.superClickValue);
+    });
+    document.addEventListener('touchend', () => {
+        clearInterval(interval);
+        clearTimeout(timeout);
+    });
+}
+else {
+    nutsPerClickBtn.addEventListener('mousedown', () => {
+        updateProccess(updateData.nutsPerClick);
+    });
+    chanceSuperClickBtn.addEventListener('mousedown', () => {
+        updateProccess(updateData.chanceSuperClick);
+    });
+    superClickValueBtn.addEventListener('mousedown', () => {
+        updateProccess(updateData.superClickValue);
+    });
+    document.addEventListener('mouseup', () => {
+        clearInterval(interval);
+        clearTimeout(timeout);
+    });
+}

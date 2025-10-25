@@ -1,15 +1,15 @@
 let nutsPerClick = parseInt(localStorage.getItem('nutsPerClick')) || 1;
 let chanceSuperClick = parseFloat(localStorage.getItem('chanceSuperClick')) || 0;
 let superClickValue = parseFloat(localStorage.getItem('superClickValue')) || 1;
-let nuts = parseInt(localStorage.getItem('nuts')) || 100000000000;
+let nuts = parseInt(localStorage.getItem('nuts')) || 1000000000;
 
-const upNutsPerClickPrice = document.querySelector('#up-nuts-per-click span');
-const upChanceSuperClickPrice = document.querySelector('#up-chance-super-click span');
-const upSuperClickValuePrice = document.querySelector('#up-super-click-value span');
+const nutsPerClickPrice = document.querySelector('#up-nuts-per-click span');
+const chanceSuperClickPrice = document.querySelector('#up-chance-super-click span');
+const superClickValuePrice = document.querySelector('#up-super-click-value span');
 
-upNutsPerClickPrice.textContent = parseInt(localStorage.getItem('upNutsPerClickPrice')) || 10;
-upChanceSuperClickPrice.textContent = parseInt(localStorage.getItem('upChanceSuperClickPrice')) || 100;
-upSuperClickValuePrice.textContent = parseInt(localStorage.getItem('upSuperClickValuePrice')) || 100;
+nutsPerClickPrice.textContent = parseInt(localStorage.getItem('nutsPerClickPrice')) || 10;
+chanceSuperClickPrice.textContent = parseInt(localStorage.getItem('chanceSuperClickPrice')) || 100;
+superClickValuePrice.textContent = parseInt(localStorage.getItem('superClickValuePrice')) || 100;
 
 function saveVariables() {
     localStorage.setItem('nutsPerClick', nutsPerClick);
@@ -17,11 +17,11 @@ function saveVariables() {
     localStorage.setItem('superClickValue', superClickValue);
     localStorage.setItem('nuts', nuts);
 
-    localStorage.setItem('upNutsPerClickPrice', upNutsPerClickPrice.textContent);
-    localStorage.setItem('upChanceSuperClickPrice', upChanceSuperClickPrice.textContent);
-    localStorage.setItem('upSuperClickValuePrice', upSuperClickValuePrice.textContent);
+    localStorage.setItem('nutsPerClickPrice', nutsPerClickPrice.textContent);
+    localStorage.setItem('chanceSuperClickPrice', chanceSuperClickPrice.textContent);
+    localStorage.setItem('superClickValuePrice', superClickValuePrice.textContent);
 }
 
 setInterval(() => {
     saveVariables();
-}, 3000);
+}, 10000);
