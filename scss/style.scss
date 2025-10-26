@@ -78,7 +78,7 @@ body {
     }
 }
 
-.upgrade-view {
+.upgrade-view, .workers-view {
     display: none;
     width: 90vw;
 
@@ -104,7 +104,8 @@ body {
             gap: 8px;
 
             &:active {
-                background: #5474ac;
+                background: #273d63;
+                border: 3px solid #374f76;
             }
 
             &.success {
@@ -130,16 +131,21 @@ body {
     left: 0;
     width: 100vw;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     background: #273b5f;
 
     button {
         background: #374f77;
-        border: none;
         font-size: 20px;
         font-weight: 900;
         padding: 15px;
         cursor: pointer;
+        border: 2px solid #5169ba;
+        border-radius: 4px 4px 0 0;
+    }
+
+    button.active {
+        transform: scale(1.2);
     }
 }
 

@@ -71,21 +71,21 @@ body {
   transform: scale(0.95);
 }
 
-.upgrade-view {
+.upgrade-view, .workers-view {
   display: none;
   width: 90vw;
 }
-.upgrade-view h3 {
+.upgrade-view h3, .workers-view h3 {
   font-size: 20px;
   font-weight: 900;
 }
-.upgrade-view p {
+.upgrade-view p, .workers-view p {
   font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.upgrade-view p button {
+.upgrade-view p button, .workers-view p button {
   height: 40px;
   background: #374f77;
   border: 3px solid #6687be;
@@ -95,18 +95,19 @@ body {
   align-items: center;
   gap: 8px;
 }
-.upgrade-view p button:active {
-  background: #5474ac;
+.upgrade-view p button:active, .workers-view p button:active {
+  background: #273d63;
+  border: 3px solid #374f76;
 }
-.upgrade-view p button.success {
+.upgrade-view p button.success, .workers-view p button.success {
   background: #277e2a;
   border: 3px solid #26c92c;
 }
-.upgrade-view p button.error {
+.upgrade-view p button.error, .workers-view p button.error {
   background: #a81414;
   border: 3px solid #ff3a3a;
 }
-.upgrade-view p button img {
+.upgrade-view p button img, .workers-view p button img {
   height: 100%;
 }
 
@@ -116,16 +117,20 @@ body {
   left: 0;
   width: 100vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   background: #273b5f;
 }
 .bottom-menu button {
   background: #374f77;
-  border: none;
   font-size: 20px;
   font-weight: 900;
   padding: 15px;
   cursor: pointer;
+  border: 2px solid #5169ba;
+  border-radius: 4px 4px 0 0;
+}
+.bottom-menu button.active {
+  transform: scale(1.2);
 }
 
 .floating-text {

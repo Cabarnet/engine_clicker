@@ -61,6 +61,6 @@ document.querySelector('#restart-game').addEventListener('click', () => {
     location.reload();
 });
 
-export {addNutsPerClick, superClick, isMobile}; 
+export {addNutsPerClick, superClick, spawnFloatingText, isMobile}; 
 
 // setInterval(addNutsPerClick, 100);
