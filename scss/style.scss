@@ -149,6 +149,76 @@ body {
     }
 }
 
+.main-quest-dialog {
+    position: fixed;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999999;
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(#000000, #00030be0);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    
+    .continue {
+        display: none;
+        position: absolute;
+        top: 10%;
+        left: 50%;
+        transform: translate(-50%, 0);
+        width: 90%;
+        text-align: center;
+        background: none;
+        animation: infinite linear 3s light-pulsation;
+    }
+
+    .content {
+        img {
+            position: absolute;
+            bottom: -5%;
+            left: 0%;
+            height: 70%;
+            transform: translate(-50%, 0);
+            opacity: 0;
+            transition: 0.5s ease;
+        }
+
+        #main-quest-text {
+            position: absolute;
+            bottom: 61%;
+            left: 50%;
+            transform: translateX(-50%);
+            max-width: 80%;
+            margin: 0;
+            padding: 15px;
+            background: #b4ceff;
+            color: #000628;
+            font-weight: 600;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+
+            &::before{
+                content: " ";
+                position: absolute;
+                bottom: -15px;
+                left: 25%;
+                width: 0;
+                height: 0;
+                border-right: 10px solid transparent;
+                border-top: 15px solid #b4ceff;
+            }
+        }
+    }
+}
+
 .floating-text {
     position: absolute;
     filter: drop-shadow(0 0 10px #fcff3d);
@@ -168,5 +238,17 @@ body {
     to {
         transform: translate(calc(var(--distance) * cos(var(--angle))), calc(var(--distance) * -1 * sin(var(--angle))));
         opacity: 0;
+    }
+}
+
+@keyframes light-pulsation {
+    0% {
+        color: #ffffff4b;
+    }
+    50% {
+        color: #ffffffe7;
+    }
+    100% {
+        color: #ffffff4b;
     }
 }
