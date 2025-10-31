@@ -19,7 +19,7 @@ html {
 
 body {
   margin: 0;
-  background-image: radial-gradient(#253043, #000);
+  background-image: radial-gradient(#002e7e, #000);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -56,10 +56,10 @@ body {
 }
 
 .main-view #engine {
-  width: 200px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   background: transparent;
-  background-image: url(../img/engine.png);
+  background-image: url(../img/Engine_crack.png);
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -118,16 +118,17 @@ body {
   width: 100vw;
   display: flex;
   justify-content: center;
-  background: #273b5f;
+  background: transparent;
 }
 .bottom-menu button {
-  background: #374f77;
+  background: #003289;
   font-size: 20px;
   font-weight: 900;
   padding: 15px;
   cursor: pointer;
-  border: 2px solid #5169ba;
-  border-radius: 4px 4px 0 0;
+  border: 2px solid #00225e;
+  border-bottom: 0;
+  border-radius: 20px 20px 0 0;
 }
 .bottom-menu button.active {
   transform: scale(1.2);
@@ -172,10 +173,10 @@ body {
 }
 .main-quest-dialog .content #main-quest-text {
   position: absolute;
-  bottom: 61%;
+  bottom: 63%;
   left: 50%;
-  transform: translateX(-50%);
-  max-width: 80%;
+  transform: translateX(-50%) skewX(-10deg);
+  max-width: 90%;
   margin: 0;
   padding: 15px;
   background: #b4ceff;
@@ -185,10 +186,14 @@ body {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
+.main-quest-dialog .content #main-quest-text h4 {
+  color: #02379b;
+  margin: 0 0 10px;
+}
 .main-quest-dialog .content #main-quest-text::before {
   content: " ";
   position: absolute;
-  bottom: -15px;
+  bottom: -14px;
   left: 25%;
   width: 0;
   height: 0;
@@ -225,6 +230,14 @@ body {
   }
   100% {
     color: rgba(255, 255, 255, 0.2941176471);
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 

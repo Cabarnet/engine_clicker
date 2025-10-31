@@ -1,7 +1,9 @@
 let nutsPerClick = parseInt(localStorage.getItem('nutsPerClick')) || 1;
 let chanceSuperClick = parseFloat(localStorage.getItem('chanceSuperClick')) || 0;
 let superClickValue = parseFloat(localStorage.getItem('superClickValue')) || 1;
-let nuts = parseInt(localStorage.getItem('nuts')) || 1000000000;
+let nuts = parseInt(localStorage.getItem('nuts')) || 0;
+
+let questCheckpoint = parseInt(localStorage.getItem('questCheckpoint')) || 0;
 
 const nutsPerClickPrice = document.querySelector('#up-nuts-per-click span');
 const chanceSuperClickPrice = document.querySelector('#up-chance-super-click span');
@@ -16,6 +18,8 @@ function saveVariables() {
     localStorage.setItem('chanceSuperClick', chanceSuperClick);
     localStorage.setItem('superClickValue', superClickValue);
     localStorage.setItem('nuts', nuts);
+
+    localStorage.setItem('questCheckpoint', questCheckpoint);
 
     localStorage.setItem('nutsPerClickPrice', nutsPerClickPrice.textContent);
     localStorage.setItem('chanceSuperClickPrice', chanceSuperClickPrice.textContent);
