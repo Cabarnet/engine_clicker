@@ -68,10 +68,10 @@ window.addEventListener('load', () => {
     const mainButton = document.querySelector('#engine');
 
     if (questCheckpoint === 0 || questCheckpoint === 1) {
-        mainButton.style.cssText = 'background-image: url(../img/Engine_crack.png);';
+        mainButton.style.cssText = 'background-image: url(img/Engine_crack.png);';
     }
     if (questCheckpoint === 2) {
-        mainButton.style.cssText = 'background-image: url(../img/Engine.png);';
+        mainButton.style.cssText = 'background-image: url(img/Engine.png);';
     }
 });
 
