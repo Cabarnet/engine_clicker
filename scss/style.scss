@@ -90,7 +90,7 @@ body {
         background-repeat: no-repeat;
         border: none;
         cursor: pointer;
-        transition: 0.2s;
+        transition: transform 0.2s, opacity 3s, filter 3s;
 
         &:active {
             transform: scale(0.95);
@@ -122,6 +122,7 @@ body {
             padding: 10px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
 
             &:active {
@@ -141,6 +142,20 @@ body {
 
             img {
                 height: 100%;
+            }
+
+            &#upgrade-engine {
+                width: 100%;
+                padding: 20px;
+                height: 63px;
+                background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%), radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+                border: 3px solid #745d27;
+
+                span {
+                    font-size: 18px;
+                    font-weight: 600;
+                    height: 16px;
+                }
             }
         }
     }
@@ -248,7 +263,7 @@ body {
 
 .floating-text {
     position: absolute;
-    filter: drop-shadow(0 0 10px #fcff3d);
+    filter: drop-shadow(0 0 10px var(--color));
     font-size: 30px;
     font-weight: 900;
     pointer-events: none;

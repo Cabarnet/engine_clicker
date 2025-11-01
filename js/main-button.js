@@ -1,7 +1,13 @@
 const nutsCount = document.querySelector('#nuts-count span');
 
 function addNutsPerClick() {
-    let finalNuts = superClick(nutsPerClick);
+    let color = "#fcff3d";
+    let finalNuts = nutsPerClick;
+
+    if (superClick()) {
+        finalNuts = parseInt(nutsPerClick * superClickValue);
+        color = "#ff0000";
+    }
 
     nuts += finalNuts;
     nutsCount.textContent = nuts;
@@ -11,19 +17,20 @@ function addNutsPerClick() {
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    if (centerX !== 0 && centerY !== 0) spawnFloatingText(centerX, centerY, '+ ' + finalNuts);
+    console.log(color);
+    if (centerX !== 0 && centerY !== 0) spawnFloatingText(centerX, centerY, '+ ' + finalNuts, color);
 }
 
-function superClick(nuts) {
+function superClick() {
     if (Math.random() < chanceSuperClick) {
-        return parseInt(nuts * superClickValue);
+        return true;
     }
     else {
-        return nuts;
+        return false;
     }
 }
 
-function spawnFloatingText(x, y, text) {
+function spawnFloatingText(x, y, text, color) {
     const floatEl = document.createElement('div');
     floatEl.textContent = text;
     floatEl.className = 'floating-text';
@@ -39,6 +46,7 @@ function spawnFloatingText(x, y, text) {
     floatEl.style.setProperty('--angle', angle + 'deg');
     floatEl.style.setProperty('--distance', distance + 'px');
     floatEl.style.setProperty('--duration', duration + 's');
+    floatEl.style.setProperty('--color', color);
 
     document.querySelector('.main-view').appendChild(floatEl);
 
@@ -56,11 +64,20 @@ else {
     document.querySelector('#engine').addEventListener('click', addNutsPerClick);
 }
 
+window.addEventListener('load', () => {
+    const mainButton = document.querySelector('#engine');
+
+    if (questCheckpoint === 0 || questCheckpoint === 1) {
+        mainButton.style.cssText = 'background-image: url(../img/Engine_crack.png);';
+    }
+    if (questCheckpoint === 2) {
+        mainButton.style.cssText = 'background-image: url(../img/Engine.png);';
+    }
+});
+
 document.querySelector('#restart-game').addEventListener('click', () => {
     localStorage.clear();
     location.reload();
 });
 
 export {addNutsPerClick, superClick, spawnFloatingText, isMobile}; 
-
-// setInterval(addNutsPerClick, 100);

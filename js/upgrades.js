@@ -1,10 +1,15 @@
 import {addNutsPerClick, superClick, isMobile} from './main-button.js';
+import { secondQuestDialog } from './main-quest.js';
 
 const nutsPerClickBtn = document.querySelector('#up-nuts-per-click');
 const chanceSuperClickBtn = document.querySelector('#up-chance-super-click');
 const superClickValueBtn = document.querySelector('#up-super-click-value');
+const upgradeEngineBtn = document.querySelector('#upgrade-engine');
 
-const updateData = {
+let interval;
+let timeout;
+
+const upgradeData = {
     nutsPerClick: {
         type: 'nutsPerClick',
         price: nutsPerClickPrice,
@@ -37,15 +42,15 @@ function upgradeProperty(priceSpan, button, type) {
         switch (type) {
             case 'nutsPerClick':
                 nutsPerClick += 1;
-                priceMultiplier = 1.5;
+                priceMultiplier = 1.1;
                 break;
             case 'superClickChance':
-                chanceSuperClick += 0.005;
-                priceMultiplier = 1.5;
+                chanceSuperClick += 0.01;
+                priceMultiplier = 1.1;
                 break;
             case 'superClickValue':
-                superClickValue += 0.1;
-                priceMultiplier = 1.5;
+                superClickValue += 0.5;
+                priceMultiplier = 1.1;
                 break;
         }
 
@@ -78,9 +83,7 @@ function upgradeProperty(priceSpan, button, type) {
     }
 }
 
-let interval;
-let timeout;
-function updateProccess ({ type, price, btn }) {
+function upgradeProccess ({ type, price, btn }) {
     upgradeProperty(price, btn, type);
     timeout = setTimeout(() => {
         interval = setInterval(() => {
@@ -89,15 +92,40 @@ function updateProccess ({ type, price, btn }) {
     }, 500);
 }
 
+function upgradeEngine() {
+    const mainPage = document.querySelector('#main-view-btn');
+    const mainButton = document.querySelector('#engine');
+    const nutsCount = document.querySelector('#nuts-count');
+    const bottomMenu = document.querySelector('.bottom-menu');
+
+    mainPage.click();
+
+    nutsCount.style.display = 'none';
+    bottomMenu.style.display = 'none';
+
+    setTimeout(() => {
+        mainButton.style.cssText = 'opacity: 0;';
+    });
+    setTimeout(() => {
+        mainButton.style.cssText = 'background-image: url(../img/Engine.png); opacity: 1; filter: drop-shadow(0 0 25px #fffce5)';
+    }, 3000);
+    setTimeout(() => {
+        nutsCount.style.display = 'block';
+        bottomMenu.style.display = 'flex';
+        secondQuestDialog();
+        mainButton.style.cssText = 'background-image: url(../img/Engine.png);';
+    }, 6000);
+}
+
 if (isMobile()) {
     nutsPerClickBtn.addEventListener('touchstart', () => {
-        updateProccess(updateData.nutsPerClick);
+        upgradeProccess(upgradeData.nutsPerClick);
     });
     chanceSuperClickBtn.addEventListener('touchstart', () => {
-        updateProccess(updateData.chanceSuperClick);
+        upgradeProccess(upgradeData.chanceSuperClick);
     });
     superClickValueBtn.addEventListener('touchstart', () => {
-        updateProccess(updateData.superClickValue);
+        upgradeProccess(upgradeData.superClickValue);
     });
     document.addEventListener('touchend', () => {
         clearInterval(interval);
@@ -106,16 +134,18 @@ if (isMobile()) {
 }
 else {
     nutsPerClickBtn.addEventListener('mousedown', () => {
-        updateProccess(updateData.nutsPerClick);
+        upgradeProccess(upgradeData.nutsPerClick);
     });
     chanceSuperClickBtn.addEventListener('mousedown', () => {
-        updateProccess(updateData.chanceSuperClick);
+        upgradeProccess(upgradeData.chanceSuperClick);
     });
     superClickValueBtn.addEventListener('mousedown', () => {
-        updateProccess(updateData.superClickValue);
+        upgradeProccess(upgradeData.superClickValue);
     });
     document.addEventListener('mouseup', () => {
         clearInterval(interval);
         clearTimeout(timeout);
     });
 }
+
+upgradeEngineBtn.addEventListener('click', upgradeEngine);

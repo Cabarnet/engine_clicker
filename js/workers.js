@@ -2,7 +2,6 @@ import { spawnFloatingText, isMobile } from './main-button.js';
 
 const hireWorkerBtn = document.querySelector('#hire-worker');
 const nutsCount = document.querySelector('#nuts-count span');
-let workersEarningsPerSecond = 0;
 let intervalId = null;
 
 function addClassToButton(button, className, duration) {
@@ -19,12 +18,13 @@ function hireWorker() {
   if (nuts >= upgradePrice) {
     nuts -= upgradePrice;
     nutsCount.textContent = nuts;
-    workersEarningsPerSecond += 100;
+    workersEarningsPerSecond += 10;
     priceSpan.textContent = upgradePrice * 1.1 - upgradePrice * 1.1 % 100;
 
     restartInterval();
 
     addClassToButton(hireWorkerBtn, 'success', 200);
+    saveVariables();
   } else {
     addClassToButton(hireWorkerBtn, 'error', 200);
   }
@@ -35,12 +35,13 @@ function addNutsByWorker() {
     const rect = button.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
+    const color = "#fcff3d";
 
     nuts += workersEarningsPerSecond;
     nutsCount.textContent = nuts;
 
     if (centerX !== 0 && centerY !== 0) {
-        spawnFloatingText(centerX, centerY, `+ ${workersEarningsPerSecond}`);
+        spawnFloatingText(centerX, centerY, `+ ${workersEarningsPerSecond}`, color);
     }
 }
 
