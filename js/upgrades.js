@@ -104,16 +104,16 @@ function upgradeEngine() {
     bottomMenu.style.display = 'none';
 
     setTimeout(() => {
-        mainButton.style.cssText = 'opacity: 0;';
+        mainButton.style.cssText = 'background-image: url(img/Engine_crack.png); opacity: 0;';
     });
     setTimeout(() => {
-        mainButton.style.cssText = 'background-image: url(../img/Engine.png); opacity: 1; filter: drop-shadow(0 0 25px #fffce5)';
+        mainButton.style.cssText = 'background-image: url(img/Engine.png); opacity: 1; filter: drop-shadow(0 0 25px #fffce5)';
     }, 3000);
     setTimeout(() => {
         nutsCount.style.display = 'block';
         bottomMenu.style.display = 'flex';
         secondQuestDialog();
-        mainButton.style.cssText = 'background-image: url(../img/Engine.png);';
+        mainButton.style.cssText = 'background-image: url(img/Engine.png);';
     }, 6000);
 }
 
