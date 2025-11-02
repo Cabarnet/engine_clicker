@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="offline-earning">
+        <div class="background"></div>
+        <div class="content">
+            <p class="text">За время вне сети ваши работники заработали:</p>
+            <p id="sum"></p>
+            <button id="close-offline-earning">Закрыть</button>
+        </div>
+    </div>
+
     <p id="nuts-count"><img src="img/Nut.png" alt="o">: <span></span></p>
     <div class="main-view">
         <button id="restart-game">Рестарт</button>
@@ -42,7 +51,7 @@
     </div>
     <div class="workers-view">
         <h3>Работники</h3>
-        <p>Нанять работника <br>(+10 гаек в секунду) 
+        <p>Нанять работника <br>(+30 гаек в секунду) 
             <button id="hire-worker">
                 <span>1000</span>
                 <img src="img/Nut.png" alt="o">

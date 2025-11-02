@@ -15,10 +15,10 @@ const mainQuestText = {
 
 let step = 0;
 const dialog = document.querySelector('.main-quest-dialog');
-const background = document.querySelector('.background');
-const questText = document.querySelector('#main-quest-text');
-const image = document.querySelector('.main-quest-dialog img');
-const continueBtn = document.querySelector('.continue');
+const background = dialog.querySelector('.background');
+const questText = dialog.querySelector('#main-quest-text');
+const image = dialog.querySelector('.main-quest-dialog img');
+const continueBtn = dialog.querySelector('.continue');
 
 function showQuestDialog(img, text) {
     let questPesron = 'Дядь Вась';

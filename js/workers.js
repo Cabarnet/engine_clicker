@@ -2,7 +2,7 @@ import { spawnFloatingText, isMobile } from './main-button.js';
 
 const hireWorkerBtn = document.querySelector('#hire-worker');
 const nutsCount = document.querySelector('#nuts-count span');
-let intervalId = null;
+let workerInterval = null;
 
 function addClassToButton(button, className, duration) {
   button.classList.add(className);
@@ -18,7 +18,7 @@ function hireWorker() {
   if (nuts >= upgradePrice) {
     nuts -= upgradePrice;
     nutsCount.textContent = nuts;
-    workersEarningsPerSecond += 10;
+    workersEarningsPerSecond += 30;
     priceSpan.textContent = upgradePrice * 1.1 - upgradePrice * 1.1 % 100;
 
     restartInterval();
@@ -45,17 +45,44 @@ function addNutsByWorker() {
     }
 }
 
-hireWorkerBtn.addEventListener('click', hireWorker);
+function showOfflineEarning() {
+  const offlineEarning = document.querySelector('.offline-earning');
+  const earningSum = offlineEarning.querySelector('#sum');
+  const nowTime = new Date().getTime();
+  const sum = parseInt((nowTime - lastOfflineTime) / 1000 * workersEarningsPerSecond);
 
-if (workersEarningsPerSecond > 0) {
-  intervalId = setInterval(addNutsByWorker, 1000);
+  earningSum.textContent = sum;
+
+  nuts += sum;
+  nutsCount.textContent = nuts;
+
+  offlineEarning.style.display = 'block';
+  
+  saveVariables();
+}
+
+function hideOfflineEarning() {
+  const offlineEarning = document.querySelector('.offline-earning');
+  offlineEarning.style.display = 'none';
 }
 
 function stopInterval() {
-  clearInterval(intervalId);
+  clearInterval(workerInterval);
 }
 
 function restartInterval() {
   stopInterval();
-  intervalId = setInterval(addNutsByWorker, 1000);
+  workerInterval = setInterval(addNutsByWorker, 1000);
 }
+
+if (workersEarningsPerSecond > 0) {
+  workerInterval = setInterval(addNutsByWorker, 1000);
+}
+
+hireWorkerBtn.addEventListener('click', hireWorker);
+window.addEventListener('load', () => {
+  if(workersEarningsPerSecond > 0) showOfflineEarning();
+});
+document.querySelector('#close-offline-earning').addEventListener('click', hideOfflineEarning);
+
+export { stopInterval, restartInterval };

@@ -1,5 +1,6 @@
 import {addNutsPerClick, superClick, isMobile} from './main-button.js';
 import { secondQuestDialog } from './main-quest.js';
+import { stopInterval, restartInterval } from './workers.js';
 
 const nutsPerClickBtn = document.querySelector('#up-nuts-per-click');
 const chanceSuperClickBtn = document.querySelector('#up-chance-super-click');
@@ -99,6 +100,7 @@ function upgradeEngine() {
     const bottomMenu = document.querySelector('.bottom-menu');
 
     mainPage.click();
+    stopInterval();
 
     nutsCount.style.display = 'none';
     bottomMenu.style.display = 'none';
@@ -114,6 +116,7 @@ function upgradeEngine() {
         bottomMenu.style.display = 'flex';
         secondQuestDialog();
         mainButton.style.cssText = 'background-image: url(img/Engine.png);';
+        restartInterval();
     }, 6000);
 }
 

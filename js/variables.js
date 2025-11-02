@@ -4,6 +4,7 @@ let superClickValue = parseFloat(localStorage.getItem('superClickValue')) || 1;
 let workersEarningsPerSecond = parseInt(localStorage.getItem('workersEarningsPerSecond')) || 0;
 let nuts = parseInt(localStorage.getItem('nuts')) || 0;
 
+const lastOfflineTime = localStorage.getItem('lastOfflineTime');
 let questCheckpoint = parseInt(localStorage.getItem('questCheckpoint')) || 0;
 
 const nutsPerClickPrice = document.querySelector('#up-nuts-per-click span');
@@ -23,6 +24,7 @@ function saveVariables() {
     localStorage.setItem('workersEarningsPerSecond', workersEarningsPerSecond);
     localStorage.setItem('nuts', nuts);
 
+    localStorage.setItem('lastOfflineTime', new Date().getTime());
     localStorage.setItem('questCheckpoint', questCheckpoint);
 
     localStorage.setItem('nutsPerClickPrice', nutsPerClickPrice.textContent);

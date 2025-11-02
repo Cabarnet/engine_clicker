@@ -28,6 +28,37 @@ body {
     justify-content: center;
 }
 
+.offline-earning {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(#000000, rgba(0, 3, 11, 0.8784313725));
+    }
+
+    .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        padding: 20px;
+        background: linear-gradient(135deg, black, #0050fd8a, black 80%);
+
+        button {
+            color: #000000;
+        }
+    }
+}
+
 #nuts-count {
     position: absolute;
     top: 3vh;
@@ -115,8 +146,7 @@ body {
 
         button {
             height: 40px;
-            background: #374f77;
-            border: 3px solid #6687be;
+            background: linear-gradient(135deg, black, transparent, black 80%);
             border-radius: 8px;
             padding: 10px;
             display: flex;
@@ -125,19 +155,19 @@ body {
             gap: 8px;
 
             &:active {
-                background: #273d63;
-                border: 3px solid #374f76;
+                background: linear-gradient(135deg, black, #00000090, black 80%);
+                border: 2px solid rgb(7, 8, 15);
             }
 
-            &.success {
-                background: #277e2a;
-                border: 3px solid #26c92c;
-            }
+            // &.success {
+            //     background: #277e2a;
+            //     border: 3px solid #26c92c;
+            // }
 
-            &.error {
-                background: #a81414;
-                border: 3px solid #ff3a3a;
-            }
+            // &.error {
+            //     background: #a81414;
+            //     border: 3px solid #ff3a3a;
+            // }
 
             img {
                 height: 100%;
@@ -170,12 +200,13 @@ body {
     background: transparent;
 
     button {
-        background: #003289;
+        // background: #003289;
+        background: linear-gradient(135deg, black, transparent, black 80%);
         font-size: 20px;
         font-weight: 900;
         padding: 15px;
         cursor: pointer;
-        border: 2px solid #00225e;
+        // border: 2px solid #00225e;
         border-bottom: 0;
         border-radius: 20px 20px 0 0;
     }
