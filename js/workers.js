@@ -1,4 +1,5 @@
 import { spawnFloatingText, isMobile } from './main-button.js';
+import { buySound } from './audio.js';
 
 const hireWorkerBtn = document.querySelector('#hire-worker');
 const nutsCount = document.querySelector('#nuts-count span');
@@ -22,6 +23,7 @@ function hireWorker() {
     priceSpan.textContent = upgradePrice * 1.1 - upgradePrice * 1.1 % 100;
 
     restartInterval();
+    buySound();
 
     addClassToButton(hireWorkerBtn, 'success', 200);
     saveVariables();

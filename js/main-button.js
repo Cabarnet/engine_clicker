@@ -1,3 +1,5 @@
+import { clickSound } from './audio.js';
+
 const nutsCount = document.querySelector('#nuts-count span');
 
 function addNutsPerClick() {
@@ -17,8 +19,9 @@ function addNutsPerClick() {
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    console.log(color);
     if (centerX !== 0 && centerY !== 0) spawnFloatingText(centerX, centerY, '+ ' + finalNuts, color);
+
+    clickSound();
 }
 
 function superClick() {

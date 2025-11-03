@@ -1,6 +1,7 @@
 import {addNutsPerClick, superClick, isMobile} from './main-button.js';
 import { secondQuestDialog } from './main-quest.js';
 import { stopInterval, restartInterval } from './workers.js';
+import { buySound } from './audio.js';
 
 const nutsPerClickBtn = document.querySelector('#up-nuts-per-click');
 const chanceSuperClickBtn = document.querySelector('#up-chance-super-click');
@@ -69,6 +70,7 @@ function upgradeProperty(priceSpan, button, type) {
         }
 
         saveVariables();
+        buySound();
         
         button.classList.add('success');
         setTimeout(() => {
@@ -94,11 +96,21 @@ function upgradeProccess ({ type, price, btn }) {
 }
 
 function upgradeEngine() {
+    const upgradeEnginePrice = upgradeEngineBtn.querySelector('span').textContent;
+    const priceWithoutSpaces = parseInt(upgradeEnginePrice.replace(/\s+/g, ''));
     const mainPage = document.querySelector('#main-view-btn');
     const mainButton = document.querySelector('#engine');
     const nutsCount = document.querySelector('#nuts-count');
     const bottomMenu = document.querySelector('.bottom-menu');
 
+    if (nuts < priceWithoutSpaces) {
+        return;
+    }
+
+    nuts -= priceWithoutSpaces;
+    nutsCount.textContent = nuts;
+
+    buySound();
     mainPage.click();
     stopInterval();
 
