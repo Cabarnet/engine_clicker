@@ -19,9 +19,13 @@
         </div>
     </div>
 
-    <p id="nuts-count"><img src="img/Nut.png" alt="o">: <span></span></p>
+    <header>
+        <button id="restart-game">⟳</button>
+        <p id="nuts-count"><img src="img/Nut.png" alt="o">: <span></span></p>
+        <button class="audio-switcher" style="background-image: url(img/AudioOn.png);"></button>
+    </header>
+
     <div class="main-view">
-        <button id="restart-game">Рестарт</button>
         <button id="engine"></button>
     </div>
     <div class="upgrade-view">
@@ -54,12 +58,16 @@
     </div>
     <div class="workers-view">
         <h3>Работники</h3>
-        <p>Нанять работника <br>(+30 гаек в секунду) 
+        <div class="container">
+            <div class="worker-info">
+                <div class="worker-image" style="background-image: url(img/Worker_Tolya.png);"></div>
+                <p>Нанять работника Толика <br>(+30 гаек в секунду)</p>
+            </div>
             <button id="hire-worker">
                 <span>1000</span>
                 <img src="img/Nut.png" alt="o">
             </button>
-        </p>
+        </div>
     </div>
     <div class="bottom-menu">
         <button class="active" id="main-view-btn">Главная</button>
@@ -100,6 +108,9 @@
         <img src="img/Support_Funny.png" alt="">
         <img src="img/Support_Happy.png" alt="">
         <img src="img/Support_Strict.png" alt="">
+        <img src="img/Worker_Tolya.png" alt="">
+        <img src="img/AudioOff.png" alt="">
+        <img src="img/AudioOn.png" alt="">
     </div>
 
     <script src="js/preloader.js"></script>
