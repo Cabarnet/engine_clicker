@@ -73,8 +73,10 @@ function stopInterval() {
 }
 
 function restartInterval() {
-  stopInterval();
-  workerInterval = setInterval(addNutsByWorker, 1000);
+  if (workersEarningsPerSecond > 0) {
+    stopInterval();
+    workerInterval = setInterval(addNutsByWorker, 1000);
+  }
 }
 
 if (workersEarningsPerSecond > 0) {

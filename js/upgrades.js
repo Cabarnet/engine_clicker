@@ -100,7 +100,8 @@ function upgradeEngine() {
     const priceWithoutSpaces = parseInt(upgradeEnginePrice.replace(/\s+/g, ''));
     const mainPage = document.querySelector('#main-view-btn');
     const mainButton = document.querySelector('#engine');
-    const nutsCount = document.querySelector('#nuts-count');
+    const nutsCount = document.querySelector('#nuts-count span');
+    const header = document.querySelector('header');
     const bottomMenu = document.querySelector('.bottom-menu');
 
     if (nuts < priceWithoutSpaces) {
@@ -114,7 +115,7 @@ function upgradeEngine() {
     mainPage.click();
     stopInterval();
 
-    nutsCount.style.display = 'none';
+    header.style.display = 'none';
     bottomMenu.style.display = 'none';
 
     setTimeout(() => {
@@ -124,7 +125,7 @@ function upgradeEngine() {
         mainButton.style.cssText = 'background-image: url(img/Engine.png); opacity: 1; filter: drop-shadow(0 0 25px #fffce5)';
     }, 3000);
     setTimeout(() => {
-        nutsCount.style.display = 'block';
+        header.style.display = 'flex';
         bottomMenu.style.display = 'flex';
         secondQuestDialog();
         mainButton.style.cssText = 'background-image: url(img/Engine.png);';

@@ -1,3 +1,5 @@
+import { uncleVoice } from './audio.js';   
+
 const mainQuestText = {
     1.1: 'Хахахахахаха, ну ты и кринж конечно',
     1.2: 'Как можно было купить машину с трещиной в движке',
@@ -42,6 +44,8 @@ function showQuestDialog(img, text) {
     let helperTimeout = setTimeout(function() {
        continueBtn.style.display = 'block';
     }, 5000);
+
+    uncleVoice();
 
     dialog.addEventListener('click', () => {
         continueBtn.style.display = 'none';
