@@ -79,7 +79,7 @@ function upgradeProperty(priceSpan, button, type) {
     }
     else {
         button.classList.add('error');
-        button.addEventListener('touchend', () => {
+        document.addEventListener('touchend', () => {
             setTimeout(() => {
                 button.classList.remove('error');
             }, 200);
