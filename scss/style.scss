@@ -28,6 +28,10 @@ body {
     justify-content: center;
 }
 
+img {
+    pointer-events: none;
+}
+
 .offline-earning {
     display: none;
     position: fixed;
@@ -73,7 +77,7 @@ body {
                 font-weight: 600;
             }
 
-            .nut {
+            img {
                 margin-top: -2px;
                 width: 20px;
                 height: 20px;
@@ -216,10 +220,10 @@ header {
         //     border: 3px solid #26c92c;
         // }
 
-        // &.error {
-        //     background: #a81414;
-        //     border: 3px solid #ff3a3a;
-        // }
+        &.error {
+            background: linear-gradient(135deg, #870000, transparent, #620000 80%);
+            border: 2px solid #620000;
+        }
 
         img {
             height: 100%;
