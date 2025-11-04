@@ -1,4 +1,5 @@
 let firstTouch = true;
+let isPlaying = false;
 let secretTouch = 0;
 const audioSwitcher = document.querySelector('.audio-switcher');
 const backgroundAudio = new Audio('audio/Bicycle Ride - Jeremy Korpas.mp3');
@@ -19,40 +20,47 @@ window.addEventListener('click', function() {
     if (firstTouch) {
         backgroundAudio.play();
         firstTouch = false;
+        isPlaying = true;
     }
 });
 
 document.addEventListener('visibilitychange', function() {
-  if (document.hidden) {
-    if (secretTouch >= 10) {
-        secretBackgroundAudio.pause();
-    }
+    if (document.hidden) {
+        if (secretTouch >= 10) {
+            secretBackgroundAudio.pause();
+        }
+        else {
+            backgroundAudio.pause();
+        }
+    } 
     else {
-        backgroundAudio.pause();
+        if (!isPlaying) {
+            return;
+        }
+        if (secretTouch >= 10) {
+            secretBackgroundAudio.play();
+        }
+        else {
+            backgroundAudio.play();
+        }
     }
-  } 
-  else {
-    if (secretTouch >= 10) {
-        secretBackgroundAudio.play();
-    }
-    else {
-    backgroundAudio.play();
-    }
-  }
 });
 
 audioSwitcher.addEventListener('click', function() {
     if (secretTouch >= 10) {
         backgroundAudio.pause();
         secretBackgroundAudio.play();
+        isPlaying = true;
         return;
     }
     if (backgroundAudio.paused) {
         backgroundAudio.play();
+        isPlaying = true;
         audioSwitcher.style.cssText = 'background-image: url(img/AudioOn.png);';
     }
     else {
         backgroundAudio.pause();
+        isPlaying = false;
         audioSwitcher.style.cssText = 'background-image: url(img/AudioOff.png);';
     }
     secretTouch++;
